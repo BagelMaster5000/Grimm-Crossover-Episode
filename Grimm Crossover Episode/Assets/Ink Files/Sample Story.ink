@@ -1,9 +1,14 @@
 #anim invisible
+#message Test message
+#character Ghost
 Ooooooooo I'm a ghost...
 You have sinned and I'm here to haunt you!
 #anim happy
+#character ...
 JUST KIDDING!
 #anim idle
+#message Anyone reading this?
+#character Mysterious Stranger
 Here I am, you miss me?
 * [Yes]
     #morality up

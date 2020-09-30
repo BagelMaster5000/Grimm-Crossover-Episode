@@ -12,19 +12,23 @@ using UnityEngine.UI;
 
 public class Dialogger : MonoBehaviour
 {
+    #pragma warning disable 649
+
     const float TEXT_DISPLAY_SPEED = 0.03f;
     const int TEXT_SCALE_START_DELTA = -40;
     const int TALKING_SOUND_DELAY = 3;
 
     [Header("Story")]
-    public TextAsset inkFile;
+    [SerializeField] TextAsset inkFile;
     static Story story;
 
     [Header("UI")]
+    [SerializeField] TextMeshProUGUI dialogText; // Dialog displaying text
+    [SerializeField] ButtonAnimator buttonAnimator; // Controls animations for all buttons
     GameObject[] buttons; // All buttons
-    public TextMeshProUGUI message; // Dialog displaying text
-    public ButtonAnimator buttonAnimator; // Controls animations for all buttons
-    public Image proceedGraphic; // Bobbing arrow to show dialogue is done
+    [SerializeField] Image proceedGraphic; // Bobbing arrow to show dialogue is done
+    [SerializeField] TextMeshProUGUI characterNameText;
+    [SerializeField] Message message;
 
     // Related to text appearing
     bool canContinue = true;
@@ -34,16 +38,18 @@ public class Dialogger : MonoBehaviour
     Coroutine fastForwardCoroutine;
 
     [Header("Sounds")]
-    public AudioSource talkingSound;
-    public AudioSource selectionSound;
+    [SerializeField] AudioSource talkingSound;
+    [SerializeField] AudioSource selectionSound;
 
     InputMaster inputs;
 
     [Header("Character")]
-    public Animator characterAnimator;
+    [SerializeField] Animator characterAnimator;
 
     // Other values
     int morality;
+
+    #pragma warning restore 649
 
     #region Inputs and Buttons Set-Up
 
@@ -68,7 +74,7 @@ public class Dialogger : MonoBehaviour
     // Set-up
     void Start()
     {
-        startTextSize = message.fontSize;
+        startTextSize = dialogText.fontSize;
         story = new Story(inkFile.text);
         proceedGraphic.enabled = false;
         ContinueStory();
@@ -106,8 +112,10 @@ public class Dialogger : MonoBehaviour
         // Checks each tag
         foreach (string t in story.currentTags)
         {
-            string prefix = t.Split(' ')[0];
-            string param = t.Split(' ')[1];
+            string prefix = t.Split(' ')[0]; // String before '#'
+            string param = ""; // String after #
+            if (prefix.Length + 1 <= t.Length - 1)
+                param = t.Substring(prefix.Length + 1);
 
             switch (prefix.ToLower())
             {
@@ -117,6 +125,12 @@ public class Dialogger : MonoBehaviour
                 case "morality":
                     morality = (param == "up") ? morality + 1 : morality - 1;
                     print("Current morality: " + morality);
+                    break;
+                case "character":
+                    SetCharacter(param);
+                    break;
+                case "message":
+                    SetMessage(param);
                     break;
             }
         }
@@ -141,6 +155,12 @@ public class Dialogger : MonoBehaviour
                 break;
         }
     }
+
+    // Sets current character talking. Called by ParseTags()
+    void SetCharacter(string param) { characterNameText.text = param; }
+
+    // Shows a pop-up message. Called by ParseTags()
+    void SetMessage(string param) { message.SetMessage(param); }
 
     // Shows buttons for player to make a choice
     void ShowChoices()
@@ -209,10 +229,10 @@ public class Dialogger : MonoBehaviour
         for (int index = 0; index < sentence.Length; index++)
         {
             letterSizes.Add(startTextSize + TEXT_SCALE_START_DELTA);
-            message.text = "";
+            dialogText.text = "";
             for (int letNum = 0; letNum < letterSizes.Count; letNum++)
             {
-                message.text += "<size=" + letterSizes[letNum] + ">" + sentence.Substring(letNum, 1) + "</size>";
+                dialogText.text += "<size=" + letterSizes[letNum] + ">" + sentence.Substring(letNum, 1) + "</size>";
                 letterSizes[letNum] = Mathf.SmoothStep(letterSizes[letNum], startTextSize, 0.5f);
             }
             soundCounter++;
@@ -230,10 +250,10 @@ public class Dialogger : MonoBehaviour
         // Shrinking text after all text has been displayed
         while (letterSizes[sentence.Length - 1] < startTextSize - 1)
         {
-            message.text = "";
+            dialogText.text = "";
             for (int letNum = 0; letNum < letterSizes.Count; letNum++)
             {
-                message.text += "<size=" + letterSizes[letNum] + ">" + sentence.Substring(letNum, 1) + "</size>";
+                dialogText.text += "<size=" + letterSizes[letNum] + ">" + sentence.Substring(letNum, 1) + "</size>";
                 letterSizes[letNum] = Mathf.SmoothStep(letterSizes[letNum], startTextSize, 0.5f);
             }
             if (fastForwarding)
@@ -241,7 +261,7 @@ public class Dialogger : MonoBehaviour
             else
                 yield return new WaitForSecondsRealtime(TEXT_DISPLAY_SPEED);
         }
-        message.text = "<size=" + startTextSize + ">" + sentence + "</size>";
+        dialogText.text = "<size=" + startTextSize + ">" + sentence + "</size>";
 
         if (story.currentChoices.Count > 0)
             ShowChoices();

@@ -97,79 +97,98 @@ VAR name = "Leo"
 == Chapter_Two
 
 Leaving the tower and following the yellow brick road Buttons comes bounding towards me. 
-        "Well, Where the fuck have you been? I just went through the a whole lot of crazy"
+        "Well, Where the fuck have you been? I just went through a whole lot of crazy"
         "Here and there, a little bit of everywhere. But we must hurry {name} so we are not late!"
         *[Chase after Buttons]
         ->Snow_White_Begin
 
 == Snow_White_Begin        
-- A short distance up the road we run into a beautiful young woman with fair skin and black hair speaking with an old peddler outside a little cottage. Turning to look for Buttons he was once again gone.
+- A short distance up the road we run into a beautiful young woman with fair skin and black hair. She was speaking with an old peddler outside a little cottage, I turned to look for Buttons he was once again gone.
 //next remark will be said inside the Players head 
-        "Perfect, he is gone once again. I will strangle his stuffed neck next time I see him" 
-    *[Excuse me Miss is everything okay?]
--- The beautiful young woman looked away sheepishly but did not say anything. 
-    * * [There is no reason to be shy, what is your name?]
-    Turning to face me, she had the most beautiful face I have ever seen. 
-    "My name is Snow White"
----"Tell her how beautiful this laced corset would look on her" cackled the old peddler.
+        "Perfect, I will strangle his stuffed neck next time I see him" 
+I approached the woman and the old peddler, the peddler was trying to sell her a corset with a lot of lace.         
+    *[Excuse me, is this peddler bothering you?]
+-- The beautiful young woman looked away sheepishly but remained quiet. 
+    * * [There is no reason to turn away, what is your name?]
+As she turned to face me, she had the most beautiful face. Almost as if she was the fairest in all the land. 
+    "My name is Snow White" she replied
+The peddler interjected:     
+---"Wouldn't this corset fit her just perfectly?" cackled the old peddler.
   She had a hunched back and a crooked smile:
-    * * *[Evil: It would look stunning, you should accept the gift] 
+    * * *[Evil: It would look stunning, you should accept the corset] 
     -> Evil_Queen_Castle
-    * * *[Good: It's not needed, don't accept the gift] 
-    -> Snow_White_Good_End
+    * * *[Good: It's not needed, you are beautiful without the corset] 
+    -> Snow_White_Bronze_Token
    
    
 == Evil_Queen_Castle
-Convincing Snow White to put the corset on, the horrid peddler put it on so tight that Snow White passed out. 
-The peddler laughs, waves her hands and smoke appears. Once the smoke cleared was the Wicked Queen, Queen Grimhilde. 
-Dressed in her long flowing royal purple gown she strode over to where I was standing. 
-        "Come with me child, let us find out who the fairest one of them all is."
-    *[Go to the Queens castle] 
+Snow White heeded your advice and purchased the corset. The peddler helped her lace it up and in doing so she laced it so tight that Snow White passed out.
+         "Come with me, let us find out who the fairest of them all truly is."
+    *[Follow her up the path]
+Reaching a clearing smoke begans to appear, an ominous laughter could be heard from within. 
+Once the smoke cleared a new figure emerged wearing a long royal purple dress topped with a golden crown.
+        "Nothing better than seeing my sinister beauty once again, shall we go to my castle now?" eloquently spoke the wicked Queen
+    * *[Evil: Go to the Queens castle] 
     ->Snow_White_Queens_Castle
-    *[Regret what you did and go back to help Snow White] 
+    * *[Good: Regret what you did and go stay to help Snow White] 
     -> Snow_White_Corset_Help
 
 
 == Snow_White_Queens_Castle
-The Queen is at the only mirror in the room:
+The Queens castle was dark on the outside, ravens circled above and it sat on the cliffs of the ocean. Following the Queen to the tallest tower there was a single mirror, she walked up to it and spoke:
         "Mirror, Mirror on the wall. Who is the fairest of them all?"
         "Snow White, O Queen, is the fairest of them all." replied the mirror
 outraged the Queen quickly turned on her heal and stormed towards me. 
         "YOU!" she said, pointing her bony finger in my face.
-        "You must help me get rid of her once again!"
+        "You must help me get rid of Snow White!"
     *[Evil: Suggest giving her a poison apple]
     ->Snow_White_Poison_Apple
-    *[Good: Leave the castle] 
-    ->Snow_White_Good_End
+    *[Good: Refuse and leave the castle] 
+    ->Snow_White_Bronze_Token
 
 
 == Snow_White_Corset_Help
+Your consciousness starts to get the better of you, you cannot stop thinking about Snow White laying there lifeless.
+You turn on your heal and begin walking to where you last saw her, a short distance later.
 You see Snow White lying on the ground unconscious:
     *[Run to her]
-The corset is too tight
-    * *[Take out your knife and cut the laces]
-Slowly she regains consciousness 
-        "Thank you" she whispers
-You walk with her back to her cottage, along the way she sees a comb. It was such a lovely comb, Snow White picked it up and started combing her hair when she fell down as if she were dead. 
+The corset is too tight and she cannot breathe
+    * *[Find her cottage]
+Panic seems to set in; trees appear like they are closing in on you. Walking in circles, unsure which way to go, you finally see smoke billowing out from the treetops left of where you are. 
+    * * *[Head towards the smoke] ->Snow_White_Meet_Dwarfs
+    
+== Snow_White_Meet_Dwarfs
+You reach the cottage, standing in front of you are seven dwarfs. 
+    *[Snow White is in trouble; the wicked Queen laced a corset on her too tightly!]
+All seven dwarfs jump into action, everyone races back to Snow White. They can remove the corset Snow White regains consciousness. 
+        "Thank you, would you mind walking with me? I would like to show you something." 
+    * *[Walk with her]    
+        ->Snow_White_Comb
+        
+== Snow_White_Comb        
+Snow White takes you down a narrow path through the forest that leads to a meadow. She begins to sing and animals one by one start to come out from the trees and bushes. They forest creatures circle her, the birds all sing back to her.. then a raven flys over and a golden comb with a ruby heart falls to the ground.
+        "Oh! What a lovely comb, I wonder where it came from?" 
 //Thought of the player
             "This must be another one of the Queens misfortunes"
-    * * *[Evil: Leave the comb in and go back to the Queens castle] 
+While you are lost in your thoughts Snow White places the comb into her hair, she falls into a deep slumber.            
+    * * *[Evil: Leave the comb in her hair] 
     ->Snow_White_Queens_Castle
-    * * *[Good: Remove the comb] 
+    * * *[Good: Remove the comb from her hair] 
     ->Snow_White_Comb_Removed
     
     
 == Snow_White_Comb_Removed   
-Snow White's eyes began to flutter open and she sat up. 
+Snow White's eyes began to flutter open: 
             "What happened?" she asked
         *[The comb must have been cursed by the wicked Queen]
-            "Oh nn, I must be getting home. My friends will be waiting for me, Goodbye!" 
+            "Thank you, kind sir, for saving me, take this token as a reward of my gratitude." 
             ->Snow_White_Bronze_Token
     
 == Snow_White_Poison_Apple
     *[My Queen we can give her a poison apple]
-        "When she breaks the peel, taste the apple, her breath will still, then I will be the fairest in the land!" replied the wicked Queen
-The Queen began working her magic on the apple, "Take this to Snow White, one bite is all it takes." she stated as she handed me the apple wrapped in cloth.
+        "When she breaks the peel, taste the apple, her breath will still, then I will be the fairest in the land!" replied the wicked Queen.
+The Queen began working her magic on the apple, 
+        "Take this to Snow White, one bite is all it takes."
     * *[Evil: Take the apple to Snow White] 
     ->Snow_White_Eats_Apple
     * *[Good: Refuse to give the apple to Snow White] 
@@ -177,27 +196,26 @@ The Queen began working her magic on the apple, "Take this to Snow White, one bi
     
 ==Snow_White_Eats_Apple
     *[Snow White! So glad I was able to see you, I wanted to apologize about earlier]
-        "Apologize? What for?
-    * *[I suggested that you wear the corset I didn't know it was going to cause you to pass out]
+        "Apologize? What for?" Snow White replied
+    * *[The corset]
           "oh... ya.. that..."
-    * * *[I brought you an apple, straight from the orchard]    
-While ensuring the best shine, while carefully unwrapping the apple.
-#anim gasp #character Snow White
-         "I love apples, how did you know they are my favorite?"
-She takes the apple in her hands, sinks her teeth into it, juice flows down her chin. Then, she collapses and the apple rolls out of her hand.
+    * * *[I brought you an apple, straight from the orchard] I stated while carefully unwrapping the apple.
+#character Snow White
+#anim gasp
+         "I love apples! How did you know they are my favorite?"
+She takes the apple in her hands, sinks her teeth into it, juice flows down her chin. She collapses to the ground; the apple rolls away. 
+You completed the task for the Queen, she is now the fairest one in the land. 
     * * * *[Find your way back to the yellow brick road] 
     -> Snow_White_Gold_Token
 
 ==Snow_White_Warned
-You find Snow White at her cottage with her seven dwarfs.
-    *[Snow White the wicked Queen is on her way with a poison apple, she will be disguised as a peddler. Do not eat it! I had to rush over and warn you before I left to continue down the road]
-        "Thank you for warning me about her, please take this token." 
+Knowing the Queen wants to poison Snow White with an apple you must warn her immediately. 
+    *[Find Snow White and warn her]
+You reach the cottage where you are able to warn Snow White of the Queens evil plan.
+    * *[Tell her about the poison apple]
+        "You have been very brave going against the Queen like this. Please take this token as a reward of my gratitude"
         ->Snow_White_Bronze_Token
               
-==Snow_White_Good_End
-    "Thank you for helping me today, please take this token" 
-    -> Snow_White_Bronze_Token
-
     
 == Snow_White_Bronze_Token
 You protected Snow White from the wicked Queen, she will live happily with her seven dwarfs. 

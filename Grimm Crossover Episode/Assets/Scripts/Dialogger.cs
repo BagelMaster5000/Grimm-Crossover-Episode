@@ -9,18 +9,23 @@ using Ink.Runtime;
 using TMPro;
 using System.Collections;
 using UnityEngine.UI;
+using System;
 
 public class Dialogger : MonoBehaviour
 {
     #pragma warning disable 649
 
-    const float TEXT_DISPLAY_SPEED = 0.03f;
+    const float TEXT_DISPLAY_SPEED = 0.016f;
     const int TEXT_SCALE_START_DELTA = -40;
     const int TALKING_SOUND_DELAY = 3;
 
     [Header("Story")]
     [SerializeField] TextAsset inkFile;
     static Story story;
+
+    [Header("Background")]
+    [SerializeField] Sprite[] backgroundSprites;
+    [SerializeField] SpriteRenderer background;
 
     [Header("UI")]
     [SerializeField] TextMeshProUGUI dialogText; // Dialog displaying text
@@ -76,6 +81,7 @@ public class Dialogger : MonoBehaviour
     {
         startTextSize = dialogText.fontSize;
         story = new Story(inkFile.text);
+        story.variablesState["name"] = GlobalVariables.playerName;
         proceedGraphic.enabled = false;
         ContinueStory();
     }
@@ -132,6 +138,9 @@ public class Dialogger : MonoBehaviour
                 case "message":
                     SetMessage(param);
                     break;
+                case "background":
+                    SetBackground(param);
+                    break;
             }
         }
     }
@@ -161,6 +170,14 @@ public class Dialogger : MonoBehaviour
 
     // Shows a pop-up message. Called by ParseTags()
     void SetMessage(string param) { message.SetMessage(param); }
+
+    void SetBackground(string param)
+    {
+        int backgroundNum = -1;
+        if (!Int32.TryParse(param, out backgroundNum) || backgroundNum >= backgroundSprites.Length)
+            return;
+        background.sprite = backgroundSprites[backgroundNum];
+    }
 
     // Shows buttons for player to make a choice
     void ShowChoices()

@@ -1,10 +1,12 @@
 #anim invisible
 #message Test message
 #character Ghost
+#background 0
 Ooooooooo I'm a ghost...
 You have sinned and I'm here to haunt you!
 #anim happy
 #character ...
+#background 1
 JUST KIDDING!
 #anim idle
 #message Anyone reading this?

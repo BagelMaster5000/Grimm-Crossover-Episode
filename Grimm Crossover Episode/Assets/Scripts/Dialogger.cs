@@ -25,7 +25,12 @@ public class Dialogger : MonoBehaviour
 
     [Header("Background")]
     [SerializeField] Sprite[] backgroundSprites;
-    [SerializeField] SpriteRenderer background;
+    [SerializeField] SpriteRenderer backgroundSpriteRenderer;
+
+    [Header("Characters")]
+    int currentCharacter; // -1 none, 0 buttons, 1 queenWithBaby, 2 rumplestilskin
+    [SerializeField] Character[] characters; // Same indexes as above
+    [SerializeField] SpriteRenderer characterSpriteRenderer;
 
     [Header("UI")]
     [SerializeField] TextMeshProUGUI dialogText; // Dialog displaying text
@@ -47,9 +52,6 @@ public class Dialogger : MonoBehaviour
     [SerializeField] AudioSource selectionSound;
 
     InputMaster inputs;
-
-    [Header("Character")]
-    [SerializeField] Animator characterAnimator;
 
     // Other values
     int morality;
@@ -79,6 +81,8 @@ public class Dialogger : MonoBehaviour
     // Set-up
     void Start()
     {
+        characterSpriteRenderer.sprite = null;
+        characterNameText.text = "";
         startTextSize = dialogText.fontSize;
         story = new Story(inkFile.text);
         story.variablesState["name"] = GlobalVariables.playerName;
@@ -112,18 +116,18 @@ public class Dialogger : MonoBehaviour
     void ParseTags()
     {
         // Doesn't parse tags if no animator attached
-        if (characterAnimator == null | story.currentTags.Count == 0)
+        if (story.currentTags.Count == 0)
             return;
 
         // Checks each tag
         foreach (string t in story.currentTags)
         {
-            string prefix = t.Split(' ')[0]; // String before '#'
-            string param = ""; // String after #
+            string prefix = t.Split(' ')[0]; // String before ' '
+            string param = ""; // String after ' '
             if (prefix.Length + 1 <= t.Length - 1)
                 param = t.Substring(prefix.Length + 1);
 
-            switch (prefix.ToLower())
+            switch (prefix)
             {
                 case "anim":
                     SetAnimation(param);
@@ -134,6 +138,9 @@ public class Dialogger : MonoBehaviour
                     break;
                 case "character":
                     SetCharacter(param);
+                    break;
+                case "characterName":
+                    SetCharacterName(param);
                     break;
                 case "message":
                     SetMessage(param);
@@ -150,23 +157,83 @@ public class Dialogger : MonoBehaviour
     {
         switch (param)
         {
-            case "idle":
-                characterAnimator.SetTrigger("Idle");
-                break;
             case "questioning":
-                characterAnimator.SetTrigger("Questioning");
+                switch (currentCharacter)
+                {
+                    case 0: characterSpriteRenderer.sprite = characters[0].characterSprites[0]; break;
+                    case 1: characterSpriteRenderer.sprite = characters[1].characterSprites[3]; break;
+                    case 2: characterSpriteRenderer.sprite = characters[2].characterSprites[3]; break;
+                }
                 break;
             case "happy":
-                characterAnimator.SetTrigger("Happy");
+                switch (currentCharacter)
+                {
+                    case 0: characterSpriteRenderer.sprite = characters[0].characterSprites[3]; break;
+                    case 1: characterSpriteRenderer.sprite = characters[1].characterSprites[2]; break;
+                    case 2: characterSpriteRenderer.sprite = characters[2].characterSprites[2]; break;
+                }
                 break;
-            case "invisible":
-                characterAnimator.SetTrigger("Invisible");
+            case "sad":
+                switch (currentCharacter)
+                {
+                    case 0: characterSpriteRenderer.sprite = characters[0].characterSprites[4]; break;
+                    case 1: characterSpriteRenderer.sprite = characters[1].characterSprites[4]; break;
+                    case 2: characterSpriteRenderer.sprite = characters[2].characterSprites[4]; break;
+                }
+                break;
+            case "angry":
+                switch (currentCharacter)
+                {
+                    case 0: characterSpriteRenderer.sprite = null; break;
+                    case 1: characterSpriteRenderer.sprite = characters[1].characterSprites[0]; break;
+                    case 2: characterSpriteRenderer.sprite = characters[2].characterSprites[0]; break;
+                }
+                break;
+            case "drinkMe":
+                switch (currentCharacter)
+                {
+                    case 0: characterSpriteRenderer.sprite = characters[0].characterSprites[2]; break;
+                    case 1: characterSpriteRenderer.sprite = null; break;
+                    case 2: characterSpriteRenderer.sprite = null; break;
+                }
+                break;
+            case "idle":
+                switch (currentCharacter)
+                {
+                    case 0: characterSpriteRenderer.sprite = characters[0].characterSprites[1]; break;
+                    case 1: characterSpriteRenderer.sprite = characters[1].characterSprites[1]; break;
+                    case 2: characterSpriteRenderer.sprite = characters[2].characterSprites[1]; break;
+                }
+                break;
+            default:
+                characterSpriteRenderer.sprite = null; break;
+        }
+    }
+
+    // Sets current character. Called by ParseTags()
+    void SetCharacter(string param)
+    {
+        switch (param)
+        {
+            case "Buttons": currentCharacter = 0; break;
+            case "QueenWithBaby": currentCharacter = 1; break;
+            case "Rumple": currentCharacter = 2; break;
+            case "none":
+                currentCharacter = -1;
+                characterNameText.text = "";
+                SetAnimation("");
                 break;
         }
     }
 
-    // Sets current character talking. Called by ParseTags()
-    void SetCharacter(string param) { characterNameText.text = param; }
+    // Sets name of current character. Called by ParseTags()
+    void SetCharacterName(string param)
+    {
+        if (param == "none")
+            characterNameText.text = "";
+        else
+            characterNameText.text = param;
+    }
 
     // Shows a pop-up message. Called by ParseTags()
     void SetMessage(string param) { message.SetMessage(param); }
@@ -176,7 +243,7 @@ public class Dialogger : MonoBehaviour
         int backgroundNum = -1;
         if (!Int32.TryParse(param, out backgroundNum) || backgroundNum >= backgroundSprites.Length)
             return;
-        background.sprite = backgroundSprites[backgroundNum];
+        backgroundSpriteRenderer.sprite = backgroundSprites[backgroundNum];
     }
 
     // Shows buttons for player to make a choice

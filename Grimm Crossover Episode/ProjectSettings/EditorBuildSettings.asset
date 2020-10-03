@@ -17,6 +17,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Story.unity
     guid: cdae476fca554d3428ab8d5b26514e0c
+  - enabled: 1
+    path: Assets/Scenes/GoodEnding.unity
+    guid: 1435dbe448f11b848ab10bc6cde5e017
+  - enabled: 1
+    path: Assets/Scenes/BadEnding.unity
+    guid: 8a01ae516db015544841915d1b5c57cd
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: e2f5898f85c534445b73cb632451527c,
       type: 2}

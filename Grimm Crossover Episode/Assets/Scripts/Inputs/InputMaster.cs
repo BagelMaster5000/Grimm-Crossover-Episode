@@ -92,6 +92,33 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""App"",
+            ""id"": ""837712af-23dd-4680-854f-b0449fe9981e"",
+            ""actions"": [
+                {
+                    ""name"": ""Exit"",
+                    ""type"": ""Button"",
+                    ""id"": ""2e9056ee-996a-47c8-b626-68d35c3f8e2e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""8aa70372-e5e4-42aa-962c-286ab0b540e3"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Exit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -117,6 +144,9 @@ public class @InputMaster : IInputActionCollection, IDisposable
         m_InGame = asset.FindActionMap("InGame", throwIfNotFound: true);
         m_InGame_AdvanceDialog = m_InGame.FindAction("Advance Dialog", throwIfNotFound: true);
         m_InGame_FastForward = m_InGame.FindAction("Fast Forward", throwIfNotFound: true);
+        // App
+        m_App = asset.FindActionMap("App", throwIfNotFound: true);
+        m_App_Exit = m_App.FindAction("Exit", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -203,6 +233,39 @@ public class @InputMaster : IInputActionCollection, IDisposable
         }
     }
     public InGameActions @InGame => new InGameActions(this);
+
+    // App
+    private readonly InputActionMap m_App;
+    private IAppActions m_AppActionsCallbackInterface;
+    private readonly InputAction m_App_Exit;
+    public struct AppActions
+    {
+        private @InputMaster m_Wrapper;
+        public AppActions(@InputMaster wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Exit => m_Wrapper.m_App_Exit;
+        public InputActionMap Get() { return m_Wrapper.m_App; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(AppActions set) { return set.Get(); }
+        public void SetCallbacks(IAppActions instance)
+        {
+            if (m_Wrapper.m_AppActionsCallbackInterface != null)
+            {
+                @Exit.started -= m_Wrapper.m_AppActionsCallbackInterface.OnExit;
+                @Exit.performed -= m_Wrapper.m_AppActionsCallbackInterface.OnExit;
+                @Exit.canceled -= m_Wrapper.m_AppActionsCallbackInterface.OnExit;
+            }
+            m_Wrapper.m_AppActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Exit.started += instance.OnExit;
+                @Exit.performed += instance.OnExit;
+                @Exit.canceled += instance.OnExit;
+            }
+        }
+    }
+    public AppActions @App => new AppActions(this);
     private int m_MouseKeyboardSchemeIndex = -1;
     public InputControlScheme MouseKeyboardScheme
     {
@@ -216,5 +279,9 @@ public class @InputMaster : IInputActionCollection, IDisposable
     {
         void OnAdvanceDialog(InputAction.CallbackContext context);
         void OnFastForward(InputAction.CallbackContext context);
+    }
+    public interface IAppActions
+    {
+        void OnExit(InputAction.CallbackContext context);
     }
 }

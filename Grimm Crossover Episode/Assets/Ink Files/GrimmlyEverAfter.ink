@@ -76,8 +76,8 @@ As you begin to approach; he walks with stride onto the road in front of you.
     
 
 == Evil_Rumple
-#morality down
-#message You have decided to help the small man:
+//#morality down
+#message You have decided to help the small man.
         #anim happy
         #characterName Rumpelstiltskin
         "Excellent young lad! The name is Rumpelstiltskin; you will get the Queen's babe for me.
@@ -85,6 +85,7 @@ As you begin to approach; he walks with stride onto the road in front of you.
         If you don't, you will not be able to leave." he laughs.
 #characterName none
 #anim idle
+#background 3
 The sun started to set and soon it was dusk, he leads you to a small house in the forest, a fire burning already.
 He starts dancing around the fire and sings:
         #characterName Rumpelstiltskin
@@ -128,17 +129,18 @@ The next morning we walked to the tower on the hill.
     
 
 == Good_Rumpel_Name
-#morality up
+//#morality up
 #anim idle
 "Queen his name is Rumpelstiltskin!"
 #characterName Queen With Baby
-#anim angry
+#anim happy
 The Queen yells "Rumpelstiltskin!"
     #character Rumpel
     #characterName Rumpelstiltskin
     #anim angry
     "Nooooooo" screams Rumpelstiltskin 
 #characterName none
+#anim sad
 He began slamming his foot down so hard it got stuck in the floor. 
 While trying to take it out his body split into two.
 #character QueenWithBaby
@@ -148,13 +150,15 @@ The Queen tosses you a token as you turn to leave.
     
 
 == Good_Help_Queen
-#morality up
+//#morality up
 #message You have decided to help the Queen and her baby.
-    * ["Yes, I will help you get what you are looking for."]
+#characterName none
+    "Yes, I will help you get what you are looking for."
+        #characterName Rumpelstiltskin
         #anim happy
         "Excellent young lad! Come, come let us not waste any more time here!" the small man laughs.
-#anim idle
 #background 3
+#anim idle
 The sun started to set and soon it was dusk, he leads you to a small house in the forest, a fire burning already. 
 He starts dancing around the fire and sings:
         #anim happy
@@ -176,7 +180,7 @@ Unwittingly Rumpelstiltskin revealed his name the Queen needs to know!
 == Good_Caught
 #anim questioning
 You tried to sneak away while Rumpelstiltskin was dancing, he caught you and is now suspicious. 
-    *[Wait till he is asleep to leave] 
+    *[Wait till he is asleep to leave]
     ->Good_Queen_Tower
     
 
@@ -213,6 +217,7 @@ You received a Gold token
 
 == The_Vial_Good
 #background 0
+#morality up
 Once again you find yourself on the yellow brick road only this time it is different.
 The road is coming to and end, at the end of the road is a giant tree with a door.
 Inside it's a small room with a table in the center, walking towards the table Buttons bounds over. 
@@ -227,10 +232,12 @@ Inside it's a small room with a table in the center, walking towards the table B
         #characterName Buttons
         "No time to say 'hello, goodbye' you're late, you're late!" he says as he pushes the vial closer
     * *[Drink the vial]
-    ->DONE
+        ...
+        ->DONE
     
 == The_Vial_Evil
 #background 0
+#morality down
 Once again you find yourself on the yellow brick road only this time it is different.
 The road is coming to and end, at the end of the road is a giant tree with a door.
 Inside it's a small room with a table in the center, walking towards the table Buttons bounds over.
@@ -244,8 +251,9 @@ Inside it's a small room with a table in the center, walking towards the table B
         Buttons places a vial on the table
         #characterName Buttons
         "No time to say 'hello,goodbye' you're late, you're late!" he says as he pushes the vial closer
-    * *[Drink the vial] 
-    ->END
+    * *[Drink the vial]
+        ...
+        ->END
     
 
  

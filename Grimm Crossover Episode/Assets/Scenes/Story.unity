@@ -228,6 +228,16 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3923720532344408436, guid: 6c652e5603d05674da33441efdd79bf5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3923720533560626502, guid: 6c652e5603d05674da33441efdd79bf5,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 23.9
+      objectReference: {fileID: 0}
     - target: {fileID: 3938391051899001140, guid: 6c652e5603d05674da33441efdd79bf5,
         type: 3}
       propertyPath: m_LocalPosition.x

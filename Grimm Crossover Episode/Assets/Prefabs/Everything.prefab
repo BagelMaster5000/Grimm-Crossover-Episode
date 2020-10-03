@@ -142,8 +142,8 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: ae5c465e5513f1e45a6072933dac17da, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
+  m_Volume: 0.711
+  m_Pitch: 0.42
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -274,7 +274,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 0afb93b4122eb694896c1e353dfbfca8, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.744
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -395,7 +395,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -419.86017}
+  m_AnchoredPosition: {x: 0, y: -419.86005}
   m_SizeDelta: {x: -56.70752, y: -885.08997}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3923720532344408438
@@ -828,6 +828,7 @@ GameObject:
   - component: {fileID: 3923720533524230044}
   - component: {fileID: 3923720533524230047}
   - component: {fileID: 3923720533524230050}
+  - component: {fileID: 8138662969118124389}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -934,6 +935,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneTransitioner: {fileID: 2476157534983428708, guid: 6f8dbc2a0f837d444922104d7b1987f0,
     type: 3}
+--- !u!114 &8138662969118124389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3923720533524230045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1efa23a62f9858f41825db1aafc7a95d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3923720533560626500
 GameObject:
   m_ObjectHideFlags: 0
@@ -1000,8 +1013,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Sample Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f61857becda37bd46a039ca0982d21db, type: 2}
+  m_sharedMaterial: {fileID: -87773832277138677, guid: f61857becda37bd46a039ca0982d21db,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1025,12 +1039,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 86.8
+  m_fontSize: 83.3
   m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 3.41
-  m_fontSizeMax: 500
+  m_fontSizeMax: 515.54
   m_fontStyle: 0
   m_HorizontalAlignment: 32
   m_VerticalAlignment: 512
@@ -1221,8 +1235,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Player
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f61857becda37bd46a039ca0982d21db, type: 2}
+  m_sharedMaterial: {fileID: -87773832277138677, guid: f61857becda37bd46a039ca0982d21db,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1246,8 +1261,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 52
-  m_fontSizeBase: 52
+  m_fontSize: 89.1
+  m_fontSizeBase: 89.1
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 3.41

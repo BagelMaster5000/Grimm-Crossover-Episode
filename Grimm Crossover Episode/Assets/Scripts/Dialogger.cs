@@ -17,7 +17,7 @@ public class Dialogger : MonoBehaviour
 
     const float TEXT_DISPLAY_SPEED = 0.016f;
     const int TEXT_SCALE_START_DELTA = -40;
-    const int TALKING_SOUND_DELAY = 3;
+    const int TALKING_SOUND_DELAY = 8;
 
     public string nextSceneName;
 

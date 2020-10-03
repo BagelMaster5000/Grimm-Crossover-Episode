@@ -492,7 +492,7 @@ MonoBehaviour:
   m_DialogTitle: Input Text
   m_DialogOkBtn: OK
   m_DialogCancelBtn: Cancel
-  m_DialogType: 1
+  m_DialogType: 0
 --- !u!114 &511595567
 MonoBehaviour:
   m_ObjectHideFlags: 0

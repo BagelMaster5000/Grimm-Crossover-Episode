@@ -774,6 +774,7 @@ GameObject:
   - component: {fileID: 8610838155159430038}
   - component: {fileID: 8610838155159430039}
   - component: {fileID: 8610838155159430032}
+  - component: {fileID: 8610838155159430035}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -781,6 +782,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8610838155159430035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8610838155159430034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1663c9dce53e29d4a872a56a8b9b43de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8610838155159430037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -793,6 +806,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09468ff478fa2674cb9a73ac66ffdfef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextSceneName: 
   inkFile: {fileID: 4900000, guid: 5b51ae28f96da004590e340278f466c1, type: 3}
   backgroundSprites:
   - {fileID: 21300000, guid: 63987e92c4ee0d44d88de6b0a59f5e24, type: 3}

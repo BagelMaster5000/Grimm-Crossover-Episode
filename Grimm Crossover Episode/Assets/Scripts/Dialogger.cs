@@ -19,6 +19,8 @@ public class Dialogger : MonoBehaviour
     const int TEXT_SCALE_START_DELTA = -40;
     const int TALKING_SOUND_DELAY = 3;
 
+    public string nextSceneName;
+
     [Header("Story")]
     [SerializeField] TextAsset inkFile;
     static Story story;
@@ -112,6 +114,8 @@ public class Dialogger : MonoBehaviour
         StartCoroutine(ShowDialog(curSentence));
     }
 
+    #region Tag Parsing
+
     // Checks tags for commands (currently used only for the character animation)
     void ParseTags()
     {
@@ -133,8 +137,7 @@ public class Dialogger : MonoBehaviour
                     SetAnimation(param);
                     break;
                 case "morality":
-                    morality = (param == "up") ? morality + 1 : morality - 1;
-                    print("Current morality: " + morality);
+                    SetMorality(param);
                     break;
                 case "character":
                     SetCharacter(param);
@@ -210,6 +213,14 @@ public class Dialogger : MonoBehaviour
         }
     }
 
+    // Increments/decrements current player morality. Called by ParseTags()
+    void SetMorality(string param)
+    {
+        morality = (param == "up") ? morality + 1 : morality - 1;
+        if (FindObjectOfType<RefreshBranchingPath>() != null)
+            FindObjectOfType<RefreshBranchingPath>().Refresh(morality);
+    }
+
     // Sets current character. Called by ParseTags()
     void SetCharacter(string param)
     {
@@ -246,6 +257,8 @@ public class Dialogger : MonoBehaviour
         backgroundSpriteRenderer.sprite = backgroundSprites[backgroundNum];
     }
 
+    #endregion
+
     // Shows buttons for player to make a choice
     void ShowChoices()
     {
@@ -270,10 +283,7 @@ public class Dialogger : MonoBehaviour
     }
 
     // Ends dialog and loads next scene
-    void FinishDialog()
-    {  
-        // FIXME Put an end behavior such as loading next scene
-    }
+    void FinishDialog() { FindObjectOfType<NextSceneFader>().FadeToNextScene(nextSceneName, false); }
 
     /* Selects a decision. Called by choice button's script
      * @param element Choice selected

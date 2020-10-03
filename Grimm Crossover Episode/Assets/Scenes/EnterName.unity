@@ -1031,6 +1031,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameInput: {fileID: 751382677}
   webGLNameInput: {fileID: 511595566}
+  webGLEnterNameText: {fileID: 1428891188}
   startButton: {fileID: 1324417286}
 --- !u!114 &1197300512
 MonoBehaviour:

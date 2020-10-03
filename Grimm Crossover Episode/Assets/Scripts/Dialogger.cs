@@ -228,7 +228,7 @@ public class Dialogger : MonoBehaviour
         {
             case "Buttons": currentCharacter = 0; break;
             case "QueenWithBaby": currentCharacter = 1; break;
-            case "Rumple": currentCharacter = 2; break;
+            case "Rumpel": currentCharacter = 2; break;
             case "none":
                 currentCharacter = -1;
                 characterNameText.text = "";

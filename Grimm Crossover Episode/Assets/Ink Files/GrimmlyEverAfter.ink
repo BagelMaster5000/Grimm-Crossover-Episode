@@ -201,6 +201,7 @@ The Queen peers out.
 #character none
 You have helped the Queen defeat Rumpelstiltskin
 
+#coin bronzeRumpel
 You received a Bronze token
     *[Travel to the yellow brick road]->The_Vial_Good
 
@@ -208,6 +209,7 @@ You received a Bronze token
 #character none
 You helped Rumpelstiltskin get what he was owed
 
+#coin goldRumpel
 You received a Gold token
     *[Travel to the yellow brick road]->The_Vial_Evil
 

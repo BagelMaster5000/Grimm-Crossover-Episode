@@ -238,6 +238,33 @@ PrefabInstance:
       propertyPath: m_fontSize
       value: 23.9
       objectReference: {fileID: 0}
+    - target: {fileID: 3923720534160198807, guid: 6c652e5603d05674da33441efdd79bf5,
+        type: 3}
+      propertyPath: coinSprites.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3923720534160198807, guid: 6c652e5603d05674da33441efdd79bf5,
+        type: 3}
+      propertyPath: coinAnimator
+      value: 
+      objectReference: {fileID: 4687135225399881475}
+    - target: {fileID: 3923720534160198807, guid: 6c652e5603d05674da33441efdd79bf5,
+        type: 3}
+      propertyPath: coinImage
+      value: 
+      objectReference: {fileID: 4687135225399881476}
+    - target: {fileID: 3923720534160198807, guid: 6c652e5603d05674da33441efdd79bf5,
+        type: 3}
+      propertyPath: coinSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: f75eccd9b54c93948aecaa262d47f054,
+        type: 3}
+    - target: {fileID: 3923720534160198807, guid: 6c652e5603d05674da33441efdd79bf5,
+        type: 3}
+      propertyPath: coinSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 36a52473fa2dd674aabb61f3c872698d,
+        type: 3}
     - target: {fileID: 3938391051899001140, guid: 6c652e5603d05674da33441efdd79bf5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -293,6 +320,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4946149908447997557, guid: 6c652e5603d05674da33441efdd79bf5,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4946149908447997557, guid: 6c652e5603d05674da33441efdd79bf5,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4946149908447997557, guid: 6c652e5603d05674da33441efdd79bf5,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6215658052681257376, guid: 6c652e5603d05674da33441efdd79bf5,
         type: 3}
       propertyPath: m_Name
@@ -300,3 +342,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c652e5603d05674da33441efdd79bf5, type: 3}
+--- !u!95 &4687135225399881475 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3014813977669316149, guid: 6c652e5603d05674da33441efdd79bf5,
+    type: 3}
+  m_PrefabInstance: {fileID: 4687135225399881474}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4687135225399881476 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 331637070994967752, guid: 6c652e5603d05674da33441efdd79bf5,
+    type: 3}
+  m_PrefabInstance: {fileID: 4687135225399881474}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

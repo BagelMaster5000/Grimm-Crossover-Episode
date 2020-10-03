@@ -5,13 +5,20 @@ using UnityEngine.UI;
 public class EnterName : MonoBehaviour
 {
     public TMP_InputField nameInput;
+    public WebGLNativeInputField webGLNameInput;
     public Button startButton;
 
-    #if !UNITY_EDITOR && UNITY_WEBGL
-
-    private void Start() { WebGLInput.captureAllKeyboardInput = false; }
-
-    #endif
+    private void Start()
+    {
+#if UNITY_WEBGL
+        nameInput.gameObject.SetActive(false);
+        webGLNameInput.gameObject.SetActive(true);
+#endif
+#if !UNITY_WEBGL
+        nameInput.gameObject.SetActive(true);
+        webGLNameInput.gameObject.SetActive(false);
+#endif
+    }
 
     private void Update() { startButton.interactable = nameInput.textComponent.text.Length > 1; }
 

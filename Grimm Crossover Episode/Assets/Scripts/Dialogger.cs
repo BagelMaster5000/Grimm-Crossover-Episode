@@ -34,6 +34,11 @@ public class Dialogger : MonoBehaviour
     [SerializeField] Character[] characters; // Same indexes as above
     [SerializeField] SpriteRenderer characterSpriteRenderer;
 
+    [Header("Coins")]
+    [SerializeField] Image coinImage;
+    [SerializeField] Animator coinAnimator;
+    [SerializeField] Sprite[] coinSprites; // 0 Bronze Rumpel, 1 Gold Rumpel
+
     [Header("UI")]
     [SerializeField] TextMeshProUGUI dialogText; // Dialog displaying text
     [SerializeField] ButtonAnimator buttonAnimator; // Controls animations for all buttons
@@ -151,6 +156,9 @@ public class Dialogger : MonoBehaviour
                 case "background":
                     SetBackground(param);
                     break;
+                case "coin":
+                    ShowCoin(param);
+                    break;
             }
         }
     }
@@ -249,12 +257,24 @@ public class Dialogger : MonoBehaviour
     // Shows a pop-up message. Called by ParseTags()
     void SetMessage(string param) { message.SetMessage(param); }
 
+    // Sets current background. Called by ParseTags()
     void SetBackground(string param)
     {
         int backgroundNum = -1;
         if (!Int32.TryParse(param, out backgroundNum) || backgroundNum >= backgroundSprites.Length)
             return;
         backgroundSpriteRenderer.sprite = backgroundSprites[backgroundNum];
+    }
+
+    // Shows either bronze or gold coin to player
+    void ShowCoin(string param)
+    {
+        switch (param)
+        {
+            case "bronzeRumpel": coinImage.sprite = coinSprites[0]; break;
+            case "goldRumpel": coinImage.sprite = coinSprites[1]; break;
+        }
+        coinAnimator.SetTrigger("Appear");
     }
 
     #endregion
